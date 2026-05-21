@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accesos Casino</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #0a0a0f;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 40px 20px;
+    font-family: 'Nunito', sans-serif;
+  }
+
+  .page {
+    width: 900px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  /* Header */
+  .header {
+    text-align: center;
+    padding: 28px 0 20px;
+    border-bottom: 2px solid #2a2a3a;
+  }
+  .header-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 11px;
+    letter-spacing: 6px;
+    color: #f0c040;
+    margin-bottom: 8px;
+  }
+  .header h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 42px;
+    color: #ffffff;
+    letter-spacing: 3px;
+  }
+  .header p {
+    color: #666;
+    font-size: 13px;
+    margin-top: 6px;
+  }
+
+  /* Casino Card */
+  .casino-card {
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  /* Ganamos */
+  .ganamos .card-header {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    padding: 22px 30px 18px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border-bottom: 3px solid #e94560;
+  }
+  .ganamos .badge {
+    background: #e94560;
+    color: white;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 2px;
+    padding: 6px 16px;
+    border-radius: 6px;
+  }
+  .ganamos .card-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 30px;
+    color: #fff;
+    letter-spacing: 2px;
+  }
+  .ganamos .card-subtitle {
+    font-size: 12px;
+    color: #e94560;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 2px;
+  }
+
+  /* Gana en Casa */
+  .ganaencasa .card-header {
+    background: linear-gradient(135deg, #0d2818 0%, #1a4a2e 50%, #0d5c2e 100%);
+    padding: 22px 30px 18px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border-bottom: 3px solid #2dce89;
+  }
+  .ganaencasa .badge {
+    background: #2dce89;
+    color: #0a1a0f;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 2px;
+    padding: 6px 16px;
+    border-radius: 6px;
+  }
+  .ganaencasa .card-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 30px;
+    color: #fff;
+    letter-spacing: 2px;
+  }
+  .ganaencasa .card-subtitle {
+    font-size: 12px;
+    color: #2dce89;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 2px;
+  }
+
+  /* Card Body */
+  .card-body {
+    background: #12121c;
+    padding: 24px 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .info-section {
+    background: #1a1a2a;
+    border-radius: 10px;
+    padding: 18px 20px;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .section-title {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .ganamos .section-title { color: #e94560; }
+  .ganaencasa .section-title { color: #2dce89; }
+
+  .section-title::before {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 2px;
+  }
+  .ganamos .section-title::before { background: #e94560; }
+  .ganaencasa .section-title::before { background: #2dce89; }
+
+  .info-row {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 12px;
+  }
+  .info-row:last-child { margin-bottom: 0; }
+
+  .info-label {
+    font-size: 10px;
+    color: #555;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .info-value {
+    font-size: 14px;
+    font-weight: 700;
+    color: #e8e8f0;
+    word-break: break-all;
+  }
+
+  .link-value {
+    font-size: 12px;
+    font-weight: 600;
+    color: #a0a0c0;
+    word-break: break-all;
+    font-family: 'Courier New', monospace;
+  }
+
+  .credential-box {
+    background: #0d0d18;
+    border-radius: 8px;
+    padding: 12px 14px;
+    margin-top: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 3px solid transparent;
+  }
+  .ganamos .credential-box { border-left-color: #e94560; }
+  .ganaencasa .credential-box { border-left-color: #2dce89; }
+
+  .cred-key {
+    font-size: 10px;
+    color: #555;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+  .cred-val {
+    font-size: 15px;
+    font-weight: 800;
+    color: #ffffff;
+    font-family: 'Courier New', monospace;
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 16px;
+    color: #333;
+    font-size: 11px;
+    letter-spacing: 1px;
+  }
+
+  /* Print styles */
+  @media print {
+    body { background: white; padding: 0; }
+    .casino-card { border: 1px solid #ccc; page-break-inside: avoid; }
+    .ganamos .card-header { background: #1a1a2e !important; -webkit-print-color-adjust: exact; }
+    .ganaencasa .card-header { background: #0d2818 !important; -webkit-print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div class="header-label">Panel de Accesos</div>
+    <h1>🎰 Mis Casinos</h1>
+    <p>Información de acceso para paneles de agente y jugadores</p>
+  </div>
+
+  <!-- CASINO GANAMOS -->
+  <div class="casino-card ganamos">
+    <div class="card-header">
+      <div class="badge">🎲 Casino</div>
+      <div>
+        <div class="card-title">GANAMOS</div>
+        <div class="card-subtitle">ganamosnet.org · ganamosvip.org</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <!-- Links -->
+      <div class="info-section">
+        <div class="section-title">Links de Acceso</div>
+        <div class="info-row">
+          <div class="info-label">🛠 Panel Agente</div>
+          <div class="link-value">agents.ganamosnet.org/users/all</div>
+        </div>
+        <div class="info-row">
+          <div class="info-label">🎮 Link Jugadores</div>
+          <div class="link-value">ganamosvip.org</div>
+        </div>
+      </div>
+      <!-- Credenciales -->
+      <div class="info-section">
+        <div class="section-title">Credenciales Agente</div>
+        <div class="credential-box">
+          <div>
+            <div class="cred-key">👤 Usuario</div>
+            <div class="cred-val">2sabri11</div>
+          </div>
+        </div>
+        <div class="credential-box" style="margin-top:10px">
+          <div>
+            <div class="cred-key">🔑 Contraseña</div>
+            <div class="cred-val">sabri123</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CASINO GANA EN CASA -->
+  <div class="casino-card ganaencasa">
+    <div class="card-header">
+      <div class="badge">🏠 Casino</div>
+      <div>
+        <div class="card-title">GANA EN CASA</div>
+        <div class="card-subtitle">admin.online · ganaencasa34.com</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <!-- Links -->
+      <div class="info-section">
+        <div class="section-title">Links de Acceso</div>
+        <div class="info-row">
+          <div class="info-label">🛠 Panel Agente</div>
+          <div class="link-value">www.admin.online/login</div>
+        </div>
+        <div class="info-row">
+          <div class="info-label">🎮 Link Jugadores</div>
+          <div class="link-value">ganaencasa34.com</div>
+        </div>
+      </div>
+      <!-- Credenciales -->
+      <div class="info-section">
+        <div class="section-title">Credenciales Agente</div>
+        <div class="credential-box">
+          <div>
+            <div class="cred-key">👤 Usuario</div>
+            <div class="cred-val">1sabri123</div>
+          </div>
+        </div>
+        <div class="credential-box" style="margin-top:10px">
+          <div>
+            <div class="cred-key">🔑 Contraseña</div>
+            <div class="cred-val">Hola1234</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">Documento de acceso privado · Usar con cuidado</div>
+
+</div>
+</body>
+</html>
